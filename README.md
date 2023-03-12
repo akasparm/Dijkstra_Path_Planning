@@ -1,7 +1,8 @@
 # How to run the code:
 Dijkstra Algorithm for path planning
 
-## 1. Required Libraries: numpy, cv2, math, time, queue
+## 1. Required Libraries: 
+numpy, cv2, math, time, queue
 
 ## 2. Input: 
 The code asks for user input for initial and destination (x, y) coordinates.
