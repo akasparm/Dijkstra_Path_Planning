@@ -74,15 +74,44 @@ def move_downleft(current_coord):
     return current_coord
 
 
+def y_conversion(old_y):
+    converted_y = 249 - old_y
+    return converted_y
+
+def find_children(current_coord):
+
+    possible_children = []
+    possible_children.append(move_up(current_coord.copy()))
+    possible_children.append(move_down(current_coord.copy()))
+    possible_children.append(move_left(current_coord.copy()))
+    possible_children.append(move_right(current_coord.copy()))
+    possible_children.append(move_upright(current_coord.copy()))
+    possible_children.append(move_downright(current_coord.copy()))
+    possible_children.append(move_upleft(current_coord.copy()))
+    possible_children.append(move_downleft(current_coord.copy()))
+
+    children = []
+    for id, child in enumerate(possible_children):
+        if child[1]>=0 and child[1]<height_y and child[0]>=0 and child[0]<width_x:
+            if canvas[y_conversion(child[1])][[child[0]]] == 0:
+                child_cost = 1.4 if id>3 else 1
+                children.append([child, child_cost])
+    
+    print(children)
+    # return children
+
+
+
 def main():
 
     global height_y, width_x, canvas
-    visited_list = set([])
-    node_objects = {}
+
     
     height_y = 250
     width_x = 600
     canvas = draw_map()
+    find_children([10, 10])
+
 
     cv.imshow("Dijkstra", canvas)
     cv.waitKey(0)
